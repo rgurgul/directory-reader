@@ -1,0 +1,21 @@
+{
+  "name": "directory-rider",
+  "version": "1.0.0",
+  "description": "Get the contents of a directory to browser",
+  "main": "directory-reader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node directory-reader -d demo -f html -e eliminated -p 1111"
+  },
+  "keywords": [
+    "directory",
+    "reader",
+    "node.js"
+  ],
+  "author": "Robert Gurgul",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.14.0",
+    "colors": "latest"
+  }
+}
