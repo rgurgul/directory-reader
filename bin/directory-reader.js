@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('colors');
 var fs = require("fs");
 var express = require("express");
