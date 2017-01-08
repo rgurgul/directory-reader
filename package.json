@@ -1,7 +1,7 @@
 {
   "name": "directory-reader",
   "homepage": "https://github.com/rgurgul/directory-reader.git",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Get the contents of a directory to browser",
   "main": "directory-reader.js",
   "scripts": {
