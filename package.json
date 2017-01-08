@@ -22,7 +22,7 @@
   ],
   "author": "Robert Gurgul",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "express": "^4.14.0",
     "colors": "latest"
   }
