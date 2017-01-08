@@ -12,8 +12,8 @@
     "url": "git+https://github.com/rgurgul/directory-reader.git"
   },
   "bin": {
-    "http-server": "./bin/directory-reader",
-    "hs": "./bin/directory-reader"
+    "directory-reader": "./bin/directory-reader",
+    "dr": "./bin/directory-reader"
   },
   "keywords": [
     "directory",
