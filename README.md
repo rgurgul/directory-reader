@@ -12,7 +12,7 @@ This will install `directory-reader` globally so that it may be run from the com
 
 ## Usage:
 
-     directory-reader [options]
+     directory-reader -d dir-name
 
 ## Available Options:
 
