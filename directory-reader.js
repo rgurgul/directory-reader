@@ -18,19 +18,20 @@ app.use(function (req, res, next) {
     next();
 });
 
-process.argv.forEach(function (value, index) {
-    switch (value) {
+process.argv.forEach(function (key, index) {
+    var value = process.argv[index + 1];
+    switch (key) {
         case '-d':
-            settings.dir = process.argv[index + 1];
+            settings.dir = value;
             break;
         case '-p':
-            settings.port = process.argv[index + 1];
+            settings.port = value;
             break;
         case '-e':
-            settings.excluded = process.argv[index + 1];
+            settings.excluded = value;
             break;
         case '-f':
-            settings.fileType = process.argv[index + 1];
+            settings.fileType = value;
             break;
     }
 });
@@ -58,5 +59,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(settings.port, function () {
-    console.log("Serving at localhost: %s".green, settings.port);
+    console.log("Serving at localhost:%s".green, settings.port);
 });
