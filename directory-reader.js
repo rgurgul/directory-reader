@@ -2,7 +2,6 @@ require('colors');
 var fs = require("fs");
 var express = require("express");
 var app = express();
-var list = [];
 var settings = {
     dir: '',
     port: 3333,
@@ -12,9 +11,7 @@ var settings = {
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
@@ -36,26 +33,26 @@ process.argv.forEach(function (key, index) {
     }
 });
 
-function readDir(directory) {
+function readDir(directory, result) {
     var items = fs.readdirSync(directory);
     items.forEach(function (val) {
-        var isFile = fs.lstatSync(directory + '/' + val).isFile();
-        var isDir = fs.lstatSync(directory + '/' + val).isDirectory();
+        var link = directory + '/' + val;
+        var isFile = fs.statSync(link).isFile();
+        var isDir = fs.statSync(link).isDirectory();
         switch (true) {
             case isDir:
-                !new RegExp(settings.excluded).test(val) && readDir(directory + '/' + val);
+                !new RegExp(settings.excluded).test(val) && readDir(link, result);
                 break;
             case isFile:
-                new RegExp("." + settings.fileType).test(val) && list.push(directory + '/' + val);
+                new RegExp("." + settings.fileType).test(val) && result.push(link);
                 break;
         }
     });
-    return list;
+    return result;
 }
 
 app.get('/', function (req, res) {
-    list = [];
-    res.send(readDir(settings.dir));
+    res.send(readDir(settings.dir, []));
 });
 
 app.listen(settings.port, function () {
